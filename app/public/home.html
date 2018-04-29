@@ -7,6 +7,10 @@
         <meta charset = "utf-8">
         <!--Bootstrap-->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <!--Font Awesome-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--Google Fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
         <!--JQuery-->
         <script
         src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -14,8 +18,10 @@
         crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         <style>
-            .container {
-                align-content: center;
+            .jumbotron {
+                text-align: center;
+                font-family: 'Acme', sans-serif;
+                background-color: rgb(124, 124, 236);
             }
         </style>
     </head>
@@ -24,8 +30,8 @@
         <body>
             <div class="container">
                 <div class="jumbotron">
-                    <h1 class="display"><bold>Friend Finder</bold></h1>
-                    <p><bold>Fill out a brief survey to find someone you'd like to hang out with!</bold></p>
+                    <h1 class="display"><i class="fa fa-facebook-official" style="font-size:48px;color: black"></i><bold>   Friend Finder</bold></h1>                  
+                    <h3><bold>Fill out a brief survey to find someone you'd like to hang out with!</bold></h3>
                     <a class="btn btn-primary btn-lg" href="./survey" role="button">Begin Survey</a>
                 </div>
             </div>
