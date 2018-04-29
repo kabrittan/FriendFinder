@@ -193,19 +193,19 @@
 
 <script type="text/javascript">
     $(".submit").click(function (event) {
-        var surveyAns = [];
+        var surveyResp = [];
         for (var i = 0; i < 10; i++) {
-            surveyAns.push(parseInt($('input[name=q' + i + ']:checked', '#survey').val()));
+            surveyResp.push(parseInt($('input[name=q' + i + ']:checked', '#survey').val()));
         }
         event.preventDefault();
-        var newBuddy = {
+        var newFriend = {
             name: $("#userName").val().trim(),
             image: $("#photoURL").val().trim(),
-            answers: surveyAns
+            answers: surveyResp
         }
-        console.log(newBuddy);
-        findBuddy(surveyAns);
-        $.post("/api/friends", newBuddy, function (data) {
+        console.log(newFriend);
+        findFriend(surveyResp);
+        $.post("/api/friends", newFriend, function (data) {
             console.log(data);
             $("#userName").val("");
             $("#photoURL").val("");
@@ -216,22 +216,24 @@
             }       
         });
     });
-    function findBuddy(surveyAns) {
+    function findFriend(surveyResp) {
         var currentURL = window.location.origin;
         var score = 0;
         $.ajax({url: currentURL + "/api/tables", method: "GET"})
-        .then(function(friendsData){
-            for (var i = 0; i < friendsData.length; i++) {
+        .then(function(newData){
+            for (var i = 0; i < newData.length; i++) {
                 for(var j = 0; j < 10; j++) {
-                    var diff = Math.abs(parseInt(surveyAns[j]) - parseInt(friendsData[i].answers[j]));
+                    var diff = Math.abs(parseInt(surveyResp[j]) - parseInt(newData[i].answers[j]));
                     score += diff;
                 }
                 if (score < 10) {
-                    console.log("Great beer bud: " + friendsData[i].name);
+                    console.log(newData[i].name + " could be a GREAT friend!");
                 }
                 else if (score < 20) {
-                    console.log("Good beer bud: " + friendsData[i].name);
+                    console.log(newData[i].name + " could still be a good friend.");
                 }
+                else (score < 30) {
+                    console.log("It would be a waste of time to try to friend" + newData[i].name);
             }
         });
     }
