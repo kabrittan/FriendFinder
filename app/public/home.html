@@ -21,20 +21,30 @@
             .jumbotron {
                 text-align: center;
                 font-family: 'Acme', sans-serif;
-                background-color: rgb(124, 124, 236);
+                background-color: rgb(156, 156, 240);
             }
         </style>
     </head>
-
     <body>
-        <body>
-            <div class="container">
-                <div class="jumbotron">
-                    <h1 class="display"><i class="fa fa-facebook-official" style="font-size:48px;color: black"></i><bold>   Friend Finder</bold></h1>                  
-                    <h3><bold>Fill out a brief survey to find someone you'd like to hang out with!</bold></h3>
-                    <a class="btn btn-primary btn-lg" href="./survey" role="button">Begin Survey</a>
+        <div class="container">
+            <div class="jumbotron">
+                <h1 class="display"><i class="fa fa-facebook-official" style="font-size:48px;color: black"></i><bold>   Friend Finder</bold></h1>                  
+                <h3><bold>Fill out a brief survey to find someone you'd like to hang out with!</bold></h3>
+                <div>
+                    <a href="survey.html">
+                        <button type="button" class="btn btn-lg btn-primary">
+                            <h5><span class="glyphicon glyphicon-list-alt"></span>Begin Survey</h5>
+                        </button>
+                    </a>
                 </div>
             </div>
-        </body>
-
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <p>
+                <a href="../data/friends.js">API Friends List</a>  |  <a href="https://github.com/kabrittan/FriendFinder">GitHub Repo</a>
+                </p>
+            </div>
+        </footer>
+    </body>
 </html>

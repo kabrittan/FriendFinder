@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
     <head>
         <title>Friend Finder</title>
         <meta charset = "utf-8">
@@ -28,7 +26,6 @@
             }
         </style>
     </head>
-
     <body>
         <div class="container">
             <div class="span" style="text-align: center">
@@ -50,7 +47,7 @@
                 <bold><p>Please respond to the following questions with a numerical value, Number 5 meaining "Strongly Agree" to Number 1 meaning "Strongly Disagree."</p></bold>
                 </div>
                 <div class="span" style="text-align: center">
-                <p>1. I prefer stay to home instead of going "out-on-the-town.</p>
+                <p>1. I prefer stay to home instead of going "out-on-the-town."</p>
                 <div class="answers">
                     <input type="radio" id="q0_5" name="q0" value="5">
                     <label for="q0_5">5</label>
@@ -186,12 +183,29 @@
             </form>
         </div>
         <br>
+        <div class="modal" tabindex="-1" role="dialog" id="friendModal"><!--beerModal-->
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Your Best Match:</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="newFriend"></div><!--beerBud-->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </body>
 
 </html>
-
 <script type="text/javascript">
-    $(".submit").click(function (event) {
+    $(".submit").on("click", function (event) {
         var surveyResp = [];
         for (var i = 0; i < 10; i++) {
             surveyResp.push(parseInt($('input[name=q' + i + ']:checked', '#survey').val()));
@@ -231,8 +245,9 @@
                 else if (score < 20) {
                     console.log(newData[i].name + " could still be a good friend.");
                 }
-                else (score < 30) {
+                else if (score < 30) {
                     console.log("It would be a waste of time to try to befriend " + newData[i].name);
+                }
             }
         });
     }
