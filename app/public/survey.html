@@ -22,10 +22,8 @@
             * {
                 font-family: 'Acme', sans-serif;
             }
-            input {
-                margin-left: 25px;
-            }
             .answers {
+                letter-spacing: 15px;
                 margin-bottom: 30px;
             }
         </style>
@@ -39,17 +37,17 @@
             <hr>
             </div>
             <form role="form" id="survey">
-                <div class="form-group" style="width: 95%">
-                    <label for="userName">Name</label>
-                    <input type="text" class="form-control" id="userName" placeholder="Enter Name">
+                <div class="span" style="text-align: center">
+                <div class="form-group" style="align-content: center">
+                    <label for="userName"><strong>Name</strong></label>
+                    <input type="text" class="form-control" id="userName" style="text-align: center" placeholder="Enter Name">
+                    <label for="photoURL"><strong>Photo ID</strong></label>
+                    <input type="url" class="form-control" id="photoURL" style="text-align: center" placeholder="Submit Link to Photo">
                 </div>
-                <div class="form-group" style="width: 95%">
-                    <label for="photoURL">Photo ID</label>
-                    <input type="url" class="form-control" id="photoURL" placeholder="URL">
                 </div>
                 <hr>
                 <div class="span" style="text-align: center">
-                <bold><p>Please respond to the following questions with a numerical value,  Number 5 meaining "Strongly Agree" to Number 1 meaning "Strongly Disagree."</p></bold>
+                <bold><p>Please respond to the following questions with a numerical value, Number 5 meaining "Strongly Agree" to Number 1 meaning "Strongly Disagree."</p></bold>
                 </div>
                 <div class="span" style="text-align: center">
                 <p>1. I prefer stay to home instead of going "out-on-the-town.</p>
@@ -187,6 +185,7 @@
                 </div>
             </form>
         </div>
+        <br>
     </body>
 
 </html>
@@ -233,7 +232,7 @@
                     console.log(newData[i].name + " could still be a good friend.");
                 }
                 else (score < 30) {
-                    console.log("It would be a waste of time to try to friend" + newData[i].name);
+                    console.log("It would be a waste of time to try to befriend " + newData[i].name);
             }
         });
     }
