@@ -181,8 +181,16 @@
                 <br>
                 </div>
             </form>
+            <footer class="footer">
+                <div class="container">
+                    <p>
+                    <a href="../data/friends.js">API Friends List</a>  |  <a href="https://github.com/kabrittan/FriendFinder">GitHub Repo</a>
+                    </p>
+                </div>
+            </footer>
         </div>
         <br>
+        <!--Add Modal-->
         <div class="modal" tabindex="-1" role="dialog" id="friendModal">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -205,34 +213,36 @@
 
 </html>
 <script type="text/javascript">
-    $("#submit").on("click", function (event) {
+    $(".submit").on("click", function (event) {
+        //Create array for new responses
         var surveyResp = [];
+        //For loop of selected responses pushing the ones with the attribute of "checked"
         for (var i = 0; i < 10; i++) {
             var answer = $('input[name=q' + i + ']:checked', '#survey').val();
             surveyResp.push(answer);
         }
         event.preventDefault();
+        //New friend object creation
         var newFriend = {
             name: $("#userName").val().trim(),
             image: $("#photoURL").val().trim(),
             answers: surveyResp
         }
-        $("#userName").val("");
-        $("#photoURL").val("");
-        $("input:radio").removeAttr("checked");
 
-        console.log(newFriend);
         findFriend(surveyResp);
-
+        //Post data and clear form
         $.post("/api/friends", newFriend, function (data) {
             console.log(data);    
         });
-    });
-    $(".close").click(function(event) {
+    }); //Close Modal
+    $(".close").on("click", function(event) {
         event.preventDefault();
         $("#friendModal").hide();
+        $("#userName").val("");
+        $("#photoURL").val("");
+        $("input:radio").removeAttr("checked");
     });
-
+    //Get new friend
     function findFriend(surveyResp) {
         var currentURL = window.location.origin + "/api/friends";
         var score;
@@ -241,13 +251,15 @@
         var bestChoiceScore = 100;
 
         $.ajax({ url: currentURL, method: "GET" })
-            .done(function(newData){
-            for (var i = 0; i < newData.length - 1; i++) {
+            .then(function(newData){
+            for (var i = 0; i < newData.length; i++) {
+                //Reset score to 0 for new friends
                 score = 0;
+                //Compares each score - friend to current user
                 for(var j = 0; j < 10; j++) {
                     var diff = Math.abs(parseInt(surveyResp[j]) - parseInt(newData[i].answers[j]));
                     score += diff;
-                }
+                } //Compares total score - friend to current user and will replace if it warrants
                 if (score < bestScore) {
                     bestChoice = newData[i].name;
                     bestChoicePic = newData[i].image;
